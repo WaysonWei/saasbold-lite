@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes
+    }
     environment {
         HOME = '.'
     }
