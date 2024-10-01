@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
+      - name: Setup node and npm path
+        run: |
+        export PATH="/home/runner/externals/node20/bin:$PATH"
+          node --version
+          npm --version
       - name: Install NPM dependencies
         run: npm install
       - name: Build App
