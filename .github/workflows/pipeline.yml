@@ -10,5 +10,5 @@ jobs:
     steps:
       - name: Setup node and npm path
         run: |
-        export PATH="/home/runner/externals/node20/bin:$PATH"
+          export PATH="/home/runner/externals/node20/bin:$PATH"
       - run: node -v
