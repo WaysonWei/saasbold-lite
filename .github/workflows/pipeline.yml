@@ -1,0 +1,17 @@
+name: SaasboldLite
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-project:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Build App
+        run: npm run build
