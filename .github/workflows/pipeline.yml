@@ -8,4 +8,4 @@ jobs:
     # You need to use the INSTALLATION_NAME from the previous step
     runs-on: arc-runner-set
     steps:
-    - run: node -v
+    - run: ./externals/node20/bin/node -v
