@@ -23,7 +23,7 @@ jobs:
   docker-build-push:
     runs-on: arc-runner-set
     container:
-      image: gcr.io/kaniko-project/executor:v1.20.0-debug 
+      image: gcr.io/kaniko-project/executor:latest
     permissions:
       contents: read
 
