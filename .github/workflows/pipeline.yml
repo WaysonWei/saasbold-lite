@@ -42,7 +42,7 @@ jobs:
 
           /kaniko/executor --dockerfile="./Dockerfile" \
             --context="${{ github.repositoryUrl }}#${{ github.ref }}#${{ github.sha }}"  \
-            --destination="$DOCKER_IMAGE_NAME:$(echo ${GITHUB_SHA} | head  -c 7)" \
+            --destination="boes2020/saasbold:latest" \
             ${{ env.KANIKO_CACHE_ARGS }} \
             --push-retry 5 
         env: 
