@@ -21,6 +21,7 @@ jobs:
         run: /home/runner/externals/node20/bin/npm run build
   
   docker-build-push:
+    needs: build-project
     runs-on: arc-runner-set
     container:
       image: gcr.io/kaniko-project/executor:latest
