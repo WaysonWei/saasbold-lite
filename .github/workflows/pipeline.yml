@@ -42,7 +42,7 @@ jobs:
 
           /kaniko/executor --dockerfile="./Dockerfile" \
             --context="${{ github.repositoryUrl }}#${{ github.ref }}#${{ github.sha }}"  \
-            --destination="boes2020/saasbold:latest" \
+            --destination="beos2020/saasbold:latest" \
             ${{ env.KANIKO_CACHE_ARGS }} \
             --push-retry 5 
         env: 
