@@ -1,36 +1,35 @@
-# Use an official Node.js image as a base
+# Use an official Node.js runtime as a parent image
 FROM node:18-alpine AS base
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (if you have it)
-COPY package.json ./
-COPY package-lock.json ./
-
-# Install dependencies
+# Install dependencies for the project
+COPY package.json package-lock.json ./
 RUN npm install
 
-# Copy the rest of the application code
+# Copy the rest of the project files
 COPY . .
 
-# Build the Next.js app
+# Build the Next.js app for production
 RUN npm run build
 
-# Use a lightweight image for the production environment
-FROM node:18-alpine AS production
+# Use a minimal Node.js runtime to serve the built app
+FROM node:18-alpine AS runner
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the built Next.js app from the previous stage
-COPY --from=base /app ./
+# Copy the build from the previous stage
+COPY --from=base /app/.next ./.next
+COPY --from=base /app/public ./public
+COPY --from=base /app/node_modules ./node_modules
+COPY --from=base /app/package.json ./
 
-# Expose the port that your app will run on
-EXPOSE 3000
-
-# Set environment variables for production
+# Set environment variable to production
 ENV NODE_ENV=production
 
-# Start the Next.js app
+# Expose port 3000
+EXPOSE 3000
+
+# Run Next.js app
 CMD ["npm", "start"]
