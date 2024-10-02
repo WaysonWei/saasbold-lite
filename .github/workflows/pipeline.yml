@@ -48,4 +48,4 @@ jobs:
         env: 
           GIT_USERNAME: ${{ secrets.USERNAME_GITHUB }}
           GIT_PASSWORD: ${{ secrets.TOKEN_GITHUB }}
-          DOCKER_IMAGE_NAME: "beos2020/saasbold:latest"
+          DOCKER_IMAGE_NAME: "${{ secrets.DOCKER_HUB_USERNAME }}/saasbold:latest"
